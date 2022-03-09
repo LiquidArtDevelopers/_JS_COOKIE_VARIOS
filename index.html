@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
-</head>
+    <link rel="stylesheet" href="jscookie.js">
 
+</head>
 
 <body>
     
@@ -25,6 +26,13 @@
                     <li><a href="#04">Services</a></li>
                     <li><a href="#06">Blog</a></li>
                     <li><a href="#08">Contact</a></li>
+                </ul>                
+            </div>
+            <div class="nav-idiomas">
+                <ul>
+                    <li id="eu"><a href="#">EU</a></li>
+                    <li id="es"><a href="#">ES</a></li>
+                    <li id="en"><a href="#">EN</a></li>
                 </ul>
             </div>
         </nav>
@@ -320,6 +328,18 @@
     </footer>
 
     <script>
+        
+        let c = getCookie("idiomas");
+        //VEMOS SI EXISTE LA COOKIE DE IDIOMAS
+        if(c !=""){
+            console.log("existe")
+        }else{
+            console.log("no existe")
+        }
+
+
+
+
         window.onscroll = function() {scrollFunction()};        
         function scrollFunction() {
           if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
