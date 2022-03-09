@@ -20,19 +20,19 @@
             </div>
             <div class="nav-enlaces">
                 <ul>
-                    <li><a href="#01">Home</a></li>
-                    <li><a href="#02">About</a></li>
-                    <li><a href="#03">Proyect</a></li>
-                    <li><a href="#04">Services</a></li>
-                    <li><a href="#06">Blog</a></li>
-                    <li><a href="#08">Contact</a></li>
+                    <li><a id="home" href="#01"></a></li>
+                    <li><a id="about" href="#02"></a></li>
+                    <li><a id="proyect" href="#03"></a></li>
+                    <li><a id="services" href="#04"></a></li>
+                    <li><a id="blog" href="#06"></a></li>
+                    <li><a id="contact" href="#08"></a></li>
                 </ul>                
             </div>
             <div class="nav-idiomas">
                 <ul>
-                    <li id="eu"><a href="#">EU</a></li>
-                    <li id="es"><a href="#">ES</a></li>
-                    <li id="en"><a href="#">EN</a></li>
+                    <li id="eu1"><a id="eu" class="idioma" href="index.html">eu</a></li>
+                    <li id="es1"><a id="es"class="idioma" href="index.html">es</a></li>
+                    <li id="en1"><a id="en" class="idioma" href="index.html">en</a></li>
                 </ul>
             </div>
         </nav>
@@ -327,19 +327,8 @@
         </div>
     </footer>
 
+    <script src="jscookie.js"></script>
     <script>
-        
-        let c = getCookie("idiomas");
-        //VEMOS SI EXISTE LA COOKIE DE IDIOMAS
-        if(c !=""){
-            console.log("existe")
-        }else{
-            console.log("no existe")
-        }
-
-
-
-
         window.onscroll = function() {scrollFunction()};        
         function scrollFunction() {
           if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
@@ -348,6 +337,80 @@
             document.getElementById("navegador").style.backgroundColor = "rgba(0, 0, 0, 0)";
           }
         }
+    </script>
+    <script>
+
+        //VARIABLES
+        let idioma="";
+
+        //VEMOS SI EXISTE LA COOKIE DE IDIOMAS
+        if (getCookie("idiomas")!="") {
+            idioma=getCookie("idiomas");
+            //cambiamos el idioma en el html/css
+        }
+
+        //ESCUCHAMOS EL CLICK DE LOS IDIOMAS
+        document.body.addEventListener("click", function(event){
+            if(event.target.classList.contains("idioma")){
+                /* //creamos la cookie del idioma
+                console.log("cookie creada: "+ event.target.id); */
+                setCookie("idiomas", event.target.id, 90);
+            }
+        })
+
+        /* //reseteamos las clases de idioma/*  */
+        function resetear(){
+            document.querySelector("#eu1").classList.remove("idioma-select");
+            document.querySelector("#es1").classList.remove("idioma-select");
+            document.querySelector("#en1").classList.remove("idioma-select");
+        }
+        
+        //en función del idioma recogemos las variables
+        switch(idioma){
+            case "eu":                
+                text01 = "Hasiera";
+                text02 = "Guri Buruz";
+                text03 = "Proiektuak";
+                text04 = "Zerbitzu";
+                text05 = "Blog";
+                text06 = "Kontaktu";
+                document.querySelector("#eu1").classList.add("idioma-select");                
+                break;
+            case "es":
+                text01 = "Inicio";
+                text02 = "Nosotros";
+                text03 = "Proyectos";
+                text04 = "Servicios";
+                text05 = "Blog";
+                text06 = "Contacto";                
+                document.querySelector("#es1").classList.add("idioma-select");
+                break;
+            case "en":
+                text01 = "Home";
+                text02 = "About";
+                text03 = "Proyect";
+                text04 = "Services";
+                text05 = "Blog";
+                text06 = "Contact";
+                document.querySelector("#en1").classList.add("idioma-select");
+                break;
+        }
+
+        //METEMOS EL HTML EN EL NAVEGADOR CON EL IDIOMA SELECCIONADO
+        document.querySelector("#home").innerHTML=text01
+        document.querySelector("#about").innerHTML=text02
+        document.querySelector("#proyect").innerHTML=text03
+        document.querySelector("#services").innerHTML=text04
+        document.querySelector("#blog").innerHTML=text05
+        document.querySelector("#contact").innerHTML=text06
+
+        console.log(idioma);
+
+
+    
+
+
+
     </script>
         
         
