@@ -7,11 +7,12 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="jscookie.js">
-
+    
 </head>
 
 <body>
     
+
     <div class="contenedor-principal">
 
         <nav id="navegador">
@@ -20,12 +21,12 @@
             </div>
             <div class="nav-enlaces">
                 <ul>
-                    <li><a id="home" href="#01"></a></li>
-                    <li><a id="about" href="#02"></a></li>
-                    <li><a id="proyect" href="#03"></a></li>
-                    <li><a id="services" href="#04"></a></li>
-                    <li><a id="blog" href="#06"></a></li>
-                    <li><a id="contact" href="#08"></a></li>
+                    <li><a id="nav-enlaces-0" href="#01"></a></li>
+                    <li><a id="nav-enlaces-1" href="#02"></a></li>
+                    <li><a id="nav-enlaces-2" href="#03"></a></li>
+                    <li><a id="nav-enlaces-3" href="#04"></a></li>
+                    <li><a id="nav-enlaces-4" href="#06"></a></li>
+                    <li><a id="nav-enlaces-5" href="#08"></a></li>
                 </ul>                
             </div>
             <div class="nav-idiomas">
@@ -343,7 +344,7 @@
         //VARIABLES
         let idioma="";
 
-        //VEMOS SI EXISTE LA COOKIE DE IDIOMAS
+        //Comprobamos que exista la cookie
         if (getCookie("idiomas")!="") {
             idioma=getCookie("idiomas");
             
@@ -355,7 +356,7 @@
         cambio();
 
 
-        //ESCUCHAMOS EL CLICK DE LOS IDIOMAS
+        //Escuchamos la selección de idioma
         document.body.addEventListener("click", function(event){
             if(event.target.classList.contains("idioma")){
                 /* //creamos la cookie del idioma
@@ -374,48 +375,53 @@
             document.querySelector("#en").classList.remove("idioma-select");
         }
         
-
+        //función en la que cambiamos el idioma
         function cambio(){
-            //en función del idioma recogemos las variables
+
+            //en función de la var, construimos los objetos en uno u otro idioma
             switch(idioma){
-                case "eu":                
-                    text01 = "Hasiera";
-                    text02 = "Guri Buruz";
-                    text03 = "Proiektuak";
-                    text04 = "Zerbitzu";
-                    text05 = "Blog";
-                    text06 = "Kontaktu";
+                case "eu":
+                    var iCabecera = {
+                        text0:"Hasiera",
+                        text1:"Guri Buruz",
+                        text2:"Proiektuak",
+                        text3:"Zerbitzu",
+                        text4:"Blog",
+                        text5:"Kontaktu",
+                    };                    
                     document.querySelector("#eu").classList.add("idioma-select");
                     break;
                 case "es":
-                    text01 = "Inicio";
-                    text02 = "Nosotros";
-                    text03 = "Proyectos";
-                    text04 = "Servicios";
-                    text05 = "Blog";
-                    text06 = "Contacto";                
+                    var iCabecera = {
+                        text0:"Inicio",
+                        text1:"Nosotros",
+                        text2:"Proyectos",
+                        text3:"Servicios",
+                        text4:"Blog",
+                        text5:"Contacto",
+                    };        
                     document.querySelector("#es").classList.add("idioma-select");
                     break;
                 case "en":
-                    text01 = "Home";
-                    text02 = "About";
-                    text03 = "Proyect";
-                    text04 = "Services";
-                    text05 = "Blog";
-                    text06 = "Contact";
+                    var iCabecera = {
+                        text0:"Home",
+                        text1:"About",
+                        text2:"Proyect",
+                        text3:"Services",
+                        text4:"Blog",
+                        text5:"Contact",
+                    };   
                     document.querySelector("#en").classList.add("idioma-select");
                     break;
             }
 
-            //METEMOS EL HTML EN EL NAVEGADOR CON EL IDIOMA SELECCIONADO
-            document.querySelector("#home").innerHTML=text01
-            document.querySelector("#about").innerHTML=text02
-            document.querySelector("#proyect").innerHTML=text03
-            document.querySelector("#services").innerHTML=text04
-            document.querySelector("#blog").innerHTML=text05
-            document.querySelector("#contact").innerHTML=text06
+            //recorremos los valores del objeto creado
+            let c = Object.values(iCabecera)
+            for(let i=0; i< c.length; i++){
+                //escribimos el html
+                document.querySelector("#nav-enlaces-"+i).innerHTML=c[i];
+            }
 
-            console.log(idioma);
          }
 
 
