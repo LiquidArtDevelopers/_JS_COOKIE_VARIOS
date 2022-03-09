@@ -74,7 +74,7 @@ body{
     color: white;
 }
 .idioma-select{
-    color:#af1d1f!important;
+    color:#fecccd!important;
 }
 ul{
     display:flex;
@@ -88,11 +88,11 @@ ul{
     color: white;
 }
 a{
-    /* color: white; */
+    color: white;
     text-decoration: none;
 }
 a:visited{
-    /* color: white; */
+    color: white;
 }
 a:hover{
     color:#fecccd;
