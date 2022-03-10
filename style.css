@@ -1,3 +1,6 @@
+:root{
+   --colorBody:rgb(196, 196, 196); 
+}
 * {
   margin: 0;
   padding: 0;
@@ -10,7 +13,7 @@ html{
 }
 body{
     width: 100%;
-    background-color: rgb(196, 196, 196);
+    background-color: var(--colorBody);
 }
 .contenedor-principal{
     max-width: 1400px;
