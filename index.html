@@ -415,14 +415,13 @@
                     document.querySelector("#en").classList.add("idioma-select");
                     break;
             }
-
+            
             //recorremos los valores del objeto creado
             let c = Object.values(iCabecera)
             for(let i=0; i< c.length; i++){
                 //escribimos el html
                 document.querySelector("#nav-enlaces-"+i).innerHTML=c[i];
             }
-
          }
 
 
